@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="quoteGenerator">
+    <head>
+        <link rel="stylesheet" href="style.css" media="screen">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Random Quote</title>
+    </head>
+    <body ng-controller="Controller">
+        <div class="contentContainer">
+            <h1 id="quote">"{{response.quote}}"</h1>
+            <h3 id="quoteAuthor">-{{response.author}}</h3>
+            <button id="twitterButton">Twitter Icon</button>
+            <button id="generateQuoteButton" ng-click="displayQuote()">New Quote</button>
+        </div>
+        <h4 id="by">by shaleen</h4>
+
+        <!--Jquery-->
+        <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+        <!--Angular Library-->
+        <script src ='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.js'></script>
+        <!--JS files-->
+        <script src="./app.js"></script>
+        <script src="./controller.js"></script>
+        <script src="./service.js"></script>
+    </body>
+</html>
