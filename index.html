@@ -1,26 +1,23 @@
 <!DOCTYPE html>
-<html ng-app="quoteGenerator">
+<html>
     <head>
         <link rel="stylesheet" href="style.css" media="screen">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
         <title>Random Quote</title>
     </head>
-    <body ng-controller="Controller">
+    <body>
         <div class="contentContainer">
-            <h1 id="quote">"{{response.quote}}"</h1>
-            <h3 id="quoteAuthor">-{{response.author}}</h3>
-            <button id="twitterButton">Twitter Icon</button>
-            <button id="generateQuoteButton" ng-click="displayQuote()">New Quote</button>
+            <h1 id="quote">"Everything is its own thing."</h1>
+            <h3 id="quoteAuthor">-BODs</h3>
+            <i id="generateQuoteButton" class="fa fa-quote-right fa-2x"></i>
+            <i id="generateTwitterButton" class="fa fa-twitter fa-2x"></i>
         </div>
         <h4 id="by">by shaleen</h4>
 
         <!--Jquery-->
         <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
-        <!--Angular Library-->
-        <script src ='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.js'></script>
         <!--JS files-->
-        <script src="./app.js"></script>
-        <script src="./controller.js"></script>
-        <script src="./service.js"></script>
+        <script src="scripts.js"></script>
     </body>
 </html>
