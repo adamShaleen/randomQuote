@@ -17,8 +17,8 @@ $(document).ready(function() {
     changeColor();
     $("body").animate({backgroundColor: colors[i]}, 1000);
     $.getJSON("https://crossorigin.me/https://quotes.stormconsultancy.co.uk/random.json?dataType=%27jsonp%27&type=%27GET%27", function(json) {
-      $("#quote").html(JSON.stringify(json.quote)).hide().fadeIn("slow");
-      $("#quoteAuthor").html(json.author).hide().fadeIn("slow");
+      $("#quote").html(JSON.stringify(json.quote)).hide().fadeIn(800);
+      $("#quoteAuthor").html(json.author).hide().fadeIn(800);
       // set the quote/author from the quote on the screen.
       currentQuote = json.quote;
       currentAuthor = json.author;
