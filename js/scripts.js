@@ -1,8 +1,8 @@
 $(document).ready(function() {
 
   // global variable to store current quote/author from API
-  var currentQuote = "";
-  var currentAuthor = "";
+  var currentQuote = "Everything is its own thing.";
+  var currentAuthor = "BODs";
 
   // list of background colors
   var colors = ["rgb(219, 193, 251)", "rgb(145, 177, 109)", "rgb(238, 158, 83)", "rgb(227, 64, 137)", "rgb(52, 100, 246)"];
@@ -15,26 +15,40 @@ $(document).ready(function() {
       i = 0;
     }
   }
-  // When quote button is clicked, use proxy to call quote API with getJSON request, fade in quote/author and render to corresponding element.
+
+  function getRandomNumber() {
+    return Math.floor((Math.random() * 80) + 1);
+  }
+
   $("#generateQuoteButton").on("click", function() {
 
     changeColor();
 
     $("body").animate({backgroundColor: colors[i]}, 1000);
 
-    $.getJSON("http://quotes.stormconsultancy.co.uk/random.json", function(json) {
+    $.ajax({
+      type: "GET",
+      dataType: "json",
+      url: "https://random-quote-generator.herokuapp.com/api/quotes/",
+      success: function(data) {
 
-      $("#quote").html(JSON.stringify(json.quote)).hide().fadeIn(800);
-      $("#quoteAuthor").html(json.author).hide().fadeIn(800);
+        var quoteNumber = getRandomNumber();
 
-      // set the quote/author from the quote on the screen.
-      currentQuote = json.quote;
-      currentAuthor = json.author;
+        $(".contentContainer").hide().fadeIn(800);
+        $("#quote").html(JSON.stringify(data[quoteNumber].quote));
+        $("#quoteAuthor").html(JSON.stringify(data[quoteNumber].author));
+
+        currentQuote = JSON.stringify(data[quoteNumber].quote);
+        currentAuthor = JSON.stringify(data[quoteNumber].author);
+
+      }
     });
 
   });
-  // When twitter button is clicked open a new window with twitter dashboard, loaded with current quote/author.
+
+  // When twitter button is clicked open a new window with twitter dashboard, loaded with current quote/author.  WIll NOT WORK WITH POPUP BLOCKERS
   $('#generateTwitterButton').on("click", function() {
       window.open("https://twitter.com/intent/tweet?text="+ currentQuote + " -" + currentAuthor);
   });
+
 });
